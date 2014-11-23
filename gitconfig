@@ -1,59 +1,56 @@
 [credential]
-    helper = cache
-
+   helper = cache
 [alias]
-    #quick look at all repo
-    loggsa = log --color --date-order --graph --oneline --decorate --simplify-by-decoration --all
-    #quick look at active branch (or refs pointed)
-    loggs  = log --color --date-order --graph --oneline --decorate --simplify-by-decoration
-    #extend look at all repo
-    logga  = log --color --date-order --graph --oneline --decorate --all
-    #extend look at active branch
-    logg   = log --color --date-order --graph --oneline --decorate  
-    #Look with date
-    logda  = log --color --date-order --graph --format=\"%C(auto)%h%Creset %C(blue bold)%ad%Creset %Cgreen%an %C(auto)%d%Creset %s\" --all 
-    logd   = log --color --date-order --graph --format=\"%C(auto)%h%Creset %C(blue bold)%ad%Creset %Cgreen%an %C(auto)%d%Creset %s\" 
-    #Look with relative date
-    lgdar = log --color --date-order --graph --format=\"%C(yellow bold)%h%Creset %C(blue bold)%ar%Creset %Cred%d%Creset %s\" --all
-    lgdr = log --color --date-order --graph --format=\"%C(yellow bold)%h%Creset %C(blue bold)%ar%Creset %Cred%d%Creset %s\"  
+   #quick look at all repo
+   loggsa = log --color --date-order --graph --oneline --decorate --simplify-by-decoration --all
+   #quick look at active branch (or refs pointed)
+   loggs  = log --color --date-order --graph --oneline --decorate --simplify-by-decoration
+   #extend look at all repo
+   logga  = log --color --date-order --graph --oneline --decorate --all
+   #extend look at active branch
+   logg   = log --color --date-order --graph --oneline --decorate
+   #Look with date
+   logda  = log --color --date-order --graph --format=\"%C(auto)%h%Creset %C(blue bold)%ad%Creset %Cgreen%an %C(auto)%d%Creset %s\" --all
+   logd   = log --color --date-order --graph --format=\"%C(auto)%h%Creset %C(blue bold)%ad%Creset %Cgreen%an %C(auto)%d%Creset %s\"
+   #Look with relative date
+   lgdar = log --color --date-order --graph --format=\"%C(yellow bold)%h%Creset %C(blue bold)%ar%Creset %Cred%d%Creset %s\" --all
+   lgdr = log --color --date-order --graph --format=\"%C(yellow bold)%h%Creset %C(blue bold)%ar%Creset %Cred%d%Creset %s\"
 
-    find = "!git log --color -p -S "
-    tdiff = diff --ignore-space-at-eol -b -w --ignore-blank-lines
-    tshow = show --ignore-space-at-eol -b -w --ignore-blank-lines
+   find = "!git log --color -p -S "
+   tdiff = diff --ignore-space-at-eol -b -w --ignore-blank-lines
+   tshow = show --ignore-space-at-eol -b -w --ignore-blank-lines
 
-    recommit = commit --amend -C HEAD
+   recommit = commit --amend -C HEAD
 
-    #typical workflow when forget something
-    commitrebase = commit -m \"[REBASE] automatic commit to be rebased\"
-    rebaseroot = rebase -i --root
+   #typical workflow when forget something
+   commitrebase = commit -m \"[REBASE] automatic commit to be rebased\"
+   rebaseroot = rebase -i --root
 
-    addu = add -u
-    adda = add :/
-    pushf = push -f
-    files = show --name-only
-    rework = commit --amend -c HEAD
+   addu = add -u
+   adda = add :/
+   pushf = push -f
+   files = show --name-only
+   rework = commit --amend -c HEAD
 
-    statusu = status -u
-    statusi = status --ignored
+   statusu = status -u
+   statusi = status --ignored
+   si = status-interactive
 
-    upstream = for-each-ref --format='%(refname:short) <- %(upstream:short)' refs/heads
-
+   upstream = for-each-ref --format='%(refname:short) <- %(upstream:short)' refs/heads
+   showalias = config --get-regexp alias
 [status]
-    color = auto
-
+   color = auto
 [merge]
-    tool = meld
-
+   tool = meld
 [core]
-    autocrlf = input
-    editor = vim
-
+   autocrlf = input
+   editor = vim
 [push]
-    default = simple
-
+   default = simple
 [color]
-    ui = auto
-
+   ui = auto
 [help]
-    browser = google-chrome
-
+   browser = google-chrome
+[status-interactive]
+   global-command = recommit rework
+   diff-command = tdiff
