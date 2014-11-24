@@ -37,7 +37,7 @@ Plugin 'vim-scripts/Decho'            "Echo messages on vim scripts execution
 Plugin 'yuratomo/dbg.vim'
 Plugin 'vim-scripts/YankRing.vim'     "Cycles through last yanked chunks Ctrl+y
 Plugin 'Yggdroot/indentLine'          "Shows a vertical line on defined tabstop
-"Plugin 'SirVer/ultisnips'            "snippets for coding for<TAB> creates a loop etc...
+"Plugin 'SirVer/ultisnips'            "snippets for coding for<TAB> creates a loop etc
 Plugin 'ervandew/supertab'            "tab autocompletion
 Plugin 'Raimondi/delimitMate'         "Help to insert closing comma, braces
 Plugin 'scrooloose/nerdtree'          "dir navigation
@@ -46,7 +46,7 @@ Plugin 'bling/vim-airline'            "handy statusline
 Plugin 'altercation/vim-colors-solarized' "solarized theme
 Plugin 'sjl/gundo.vim'                "show undo tree
 Plugin 'sjl/splice.vim'               "helper for diffs
-Plugin 'davidhalter/jedi-vim'        
+Plugin 'davidhalter/jedi-vim'
 Plugin 'airblade/vim-gitgutter'       "Ruler for changes on git tracked files
 Plugin 'vim-scripts/AnsiEsc.vim'      "conceal escape colors to show a WYSIWYG
 Plugin 'albfan/vim-minimap'           "A minimap file
@@ -73,9 +73,10 @@ filetype plugin indent on     " required
 
 " Solarized scheme
 syntax enable
- 
+
 if has('gui_running')
    set background=dark
+   colorscheme solarized 
 else
    set background=dark
    "set background=light
@@ -88,7 +89,6 @@ highlight ColorColumn ctermbg=235 guibg=#2c2d27
 map <Leader>c :let &colorcolumn=join(range(120,999),",")<CR>
 map <Leader>cc :let &colorcolumn=''<CR>
 
-"colorscheme solarized 
 
 inoremap <C-C> <ESC>
 
@@ -170,7 +170,7 @@ augroup vim_java
 augroup END
 
 " First try for indexing files
-map <Leader>t :!ctags -R ./src $JDK_HOME/src<CR> 
+map <Leader>t :!ctags -R ./src $JDK_HOME/src<CR>
 
 "Yankring
 let g:yankring_replace_n_pkey = '<C-Y>'
