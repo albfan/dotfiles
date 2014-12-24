@@ -34,7 +34,6 @@
 
    statusu = status -u
    statusi = status --ignored
-   si = status-interactive
 
    upstream = for-each-ref --format='%(refname:short) <- %(upstream:short)' refs/heads
    showalias = config --get-regexp alias
@@ -51,6 +50,6 @@
    ui = auto
 [help]
    browser = google-chrome
-[status-interactive]
+[loop]
    global-command = recommit rework
    diff-command = tdiff
