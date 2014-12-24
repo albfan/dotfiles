@@ -3,6 +3,7 @@ filetype off                  " required
 set number
 autocmd! bufwritepost ~/.vimrc source %
 map <leader>sv :source $MYVIMRC<CR>
+set hidden
 
 let mapleader = ","
 
@@ -34,13 +35,13 @@ Plugin 'albfan/git-time-lapse'        "show a history time lapse like perforce
 Plugin 'vim-scripts/genutils'
 Plugin 'albfan/BreakPts'              "Help debug vim-scripts (only remote)
 Plugin 'vim-scripts/Decho'            "Echo messages on vim scripts execution
-Plugin 'yuratomo/dbg.vim'
 Plugin 'vim-scripts/YankRing.vim'     "Cycles through last yanked chunks Ctrl+y
 Plugin 'Yggdroot/indentLine'          "Shows a vertical line on defined tabstop
-"Plugin 'SirVer/ultisnips'            "snippets for coding for<TAB> creates a loop etc
+"Plugin 'SirVer/ultisnips'            "snippets for coding for<TAB> creates a loop etc...
 Plugin 'ervandew/supertab'            "tab autocompletion
 Plugin 'Raimondi/delimitMate'         "Help to insert closing comma, braces
 Plugin 'scrooloose/nerdtree'          "dir navigation
+Plugin 'scrooloose/nerdcommenter'     "easy comment/uncomment
 Plugin 'kien/ctrlp.vim'               "fuzzy search for files
 Plugin 'bling/vim-airline'            "handy statusline
 Plugin 'altercation/vim-colors-solarized' "solarized theme
@@ -55,7 +56,16 @@ Plugin 'albfan/cream-showinvisibles'  "Show whitespace
 Plugin 'rking/ag.vim'                 "Use ag instead of grep
 Plugin 'airblade/vim-rooter'          "Always set working directory to root of project
 Plugin 'craigemery/vim-autotag'       "refresh tags when writing file
-Plugin 'albfan/yavdb'
+Plugin 'albfan/dbg.vim'               "general debugger fixed for java sources
+Plugin 'albfan/bashfunction.vim'      "navigate through declared bash functions
+Plugin 'Shougo/unite.vim'             "A plugin from all things
+Plugin 'sjbach/lusty'
+"Plugin 'zhaocai/GoldenView.Vim'      "shorcuts conflicts with multi-cursors
+Plugin 'Shougo/vimproc.vim'
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-easytags'
+Plugin 'Lokaltog/vim-easymotion'      "easy motion in vim
+Plugin 'majutsushi/tagbar'
 
 filetype plugin indent on     " required
 " To ignore plugin indent changes, instead use:
@@ -86,9 +96,16 @@ endif
 "match ErrorMsg '\%>120v.\+'
 "set cc=120
 highlight ColorColumn ctermbg=235 guibg=#2c2d27
-map <Leader>c :let &colorcolumn=join(range(120,999),",")<CR>
-map <Leader>cc :let &colorcolumn=''<CR>
 
+nnoremap <leader>tcc :call ColorColumnToggle()<CR>
+
+function! ColorColumnToggle()
+   if &colorcolumn == ''
+      let &colorcolumn=join(range(120,999),",")
+   else
+      let &colorcolumn=''
+   endif
+endfunction
 
 inoremap <C-C> <ESC>
 
@@ -102,16 +119,15 @@ nmap <Space> <S-Down>
 nmap <S-Space> <S-Up> "Doesn't work on vim only in gvim
 
 nmap <C-B> :tag <C-R>=expand('<cword>')<CR><CR>
+nmap <Leader>tw :set wrap!<CR>
+nmap <Leader>tn :set number!<CR>
 
 " vertical line indentation
 let g:indentLine_color_term = 239
 let g:indentLine_color_gui = '#09AA08'
 let g:indentLine_char = '│'
 
-" NERDTree config
-nmap <leader>d :NERDTreeToggle<CR>
 
-nmap <leader>u :GundoToggle<CR>
 
 " CtrlP Configuration {{{
 " Use <leader>t to open ctrlp
@@ -125,8 +141,8 @@ set wildignore+=*/build/*,*/target/*
 " airline
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
-" vim-powerline
-"let g:Powerline_symbols = 'fancy'
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
 set t_Co=256
 set laststatus=2
 
@@ -144,9 +160,13 @@ set hlsearch
 set incsearch
 set ignorecase
 set smartcase
-
 set number
 
+" scary config, lets see what happens, recover is annoying
+set nobackup
+set noswapfile
+
+"move around windows
 map <c-j> <c-w>j
 map <c-k> <c-w>k
 map <c-l> <c-w>l
@@ -169,23 +189,19 @@ augroup vim_java
     autocmd FileType java set errorformat=[ERROR]\ %f:[%l%.%c]%m
 augroup END
 
-" First try for indexing files
-map <Leader>t :!ctags -R ./src $JDK_HOME/src<CR>
+"NERDTree
+let NERDTreeIgnore=['\.pyc$', '\.class$']
+
+" Index actual jdk
+map <Leader>bjt :!ctags -R ./src $JDK_HOME/src<CR> 
 
 "Yankring
 let g:yankring_replace_n_pkey = '<C-Y>'
 let g:yankring_replace_n_nkey = '<C-U>'
 
-"relative number
-function! NumberToggle()
-  if(&relativenumber == 1)
-    set norelativenumber
-  else
-    set relativenumber
-  endif
-endfunc
-
-nnoremap <Leader>n :call NumberToggle()<cr>
+map <Leader>trn :set relativenumber!<cr>
+map <leader>tn :NERDTreeToggle<CR>
+map <leader>tu :GundoToggle<CR>
 
 autocmd FocusLost * set norelativenumber
 autocmd FocusGained * set relativenumber
@@ -196,4 +212,28 @@ autocmd InsertLeave * set relativenumber
 "git gutter
 highlight clear SignColumn
 nnoremap <Leader>g :GitGutterToggle<CR>
+nnoremap <Leader>gn :GitGutterNextHunk<CR>
+nnoremap <Leader>gp :GitGutterPreviousHunk<CR>
+nnoremap <Leader>gv :GitGutterPreviewHunk<CR>
+
+map <Leader>ug :Unite grep -start-insert<CR>
+map <Leader>uf :Unite file_rec -start-insert<CR>
+map <Leader>um :Unite mapping -start-insert<CR>
+map <Leader>ur :Unite register -start-insert<CR>
+
+map <Leader>dt :diffthis<CR>
+map <Leader>do :diffoff<CR>
+map <Leader>du :diffupdate<CR>
+
+map <Leader>uu :GundoRenderGraph<CR>
+
+function! VerticalSplitPreview(file)
+   execute "vert botright split" . a:file . "| wincmd p"
+endfunction
+command! -complete=file -nargs=1 VSPreview call VerticalSplitPreview(<f-args>)
+map <Leader>vs :VSPreview 
+
+"default completion in supertab
+let g:SuperTabDefaultCompletionType = "<c-n>"
+let g:SuperTabContextDefaultCompletionType = "<c-n>"
 
