@@ -97,8 +97,6 @@ endif
 "set cc=120
 highlight ColorColumn ctermbg=235 guibg=#2c2d27
 
-nnoremap <leader>tcc :call ColorColumnToggle()<CR>
-
 function! ColorColumnToggle()
    if &colorcolumn == ''
       let &colorcolumn=join(range(120,999),",")
@@ -121,6 +119,9 @@ nmap <S-Space> <S-Up> "Doesn't work on vim only in gvim
 nmap <C-B> :tag <C-R>=expand('<cword>')<CR><CR>
 nmap <Leader>tw :set wrap!<CR>
 nmap <Leader>tn :set number!<CR>
+nmap <leader>tcc :call ColorColumnToggle()<CR>
+nmap <leader>tt :TagbarToggle<CR>
+nmap <leader>ti :IndentLinesToggle<CR>
 
 " vertical line indentation
 let g:indentLine_color_term = 239
