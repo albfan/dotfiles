@@ -19,5 +19,6 @@ alias mq='hg -R $(hg root)/.hg/patches'
 alias vi=vim
 alias ostat='stat -c "%a %n"'
 
+# https://github.com/albfan/script-manager
 alias cd-script='cd $(script-manager --goto)'
 
