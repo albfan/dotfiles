@@ -1,0 +1,2 @@
+# alias for man based on w3m fork https://github.com/albfan/w3m
+alias man=' w3mman -s $(echo cols | tput -S)'
