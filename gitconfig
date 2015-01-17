@@ -20,6 +20,7 @@
    find = "!git log --color -p -S "
    tdiff = diff --ignore-space-at-eol -b --ignore-blank-lines
    tshow = show --ignore-space-at-eol -b --ignore-blank-lines
+   dirdiff = difftool --dir-diff
    recommit = commit --amend -C HEAD
 
    #typical workflow when forget something
