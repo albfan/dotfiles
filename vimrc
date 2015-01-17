@@ -66,6 +66,10 @@ Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-easytags'
 Plugin 'Lokaltog/vim-easymotion'      "easy motion in vim
 Plugin 'majutsushi/tagbar'
+Plugin 'szw/vim-ctrlspace'            "navigate through buffers and tabs
+Plugin 'rstacruz/sparkup'             "write HTML faster
+Plugin 'junegunn/goyo.vim'            "Non disturb mode
+Plugin 'edkolev/tmuxline.vim'         "Config tmuxline from vim
 
 filetype plugin indent on     " required
 " To ignore plugin indent changes, instead use:
