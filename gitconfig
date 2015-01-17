@@ -22,6 +22,7 @@
    tshow = show --ignore-space-at-eol -b --ignore-blank-lines
    dirdiff = difftool --dir-diff
    recommit = commit --amend -C HEAD
+   diffc = diff --cached
 
    #typical workflow when forget something
    commitrebase = commit -m \"[REBASE] automatic commit to be rebased\"
@@ -29,6 +30,7 @@
 
    addu = add -u
    adda = add :/
+   addp = add -p
    pushf = push -f
    files = show --name-only
    rework = commit --amend -c HEAD
@@ -38,6 +40,9 @@
 
    upstream = for-each-ref --format='%(refname:short) <- %(upstream:short)' refs/heads
    showalias = config --get-regexp alias
+
+   econfigg = config --global -e
+
 [status]
    color = auto
 [merge]
