@@ -15,6 +15,7 @@
    #Look with relative date
    lgdar = log --color --date-order --graph --format=\"%C(yellow bold)%h%Creset %C(blue bold)%ar%Creset %Cred%d%Creset %s\" --all
    lgdr = log --color --date-order --graph --format=\"%C(yellow bold)%h%Creset %C(blue bold)%ar%Creset %Cred%d%Creset %s\"
+   loga = log --color --graph --decorate --all
 
    find = "!git log --color -p -S "
    tdiff = diff --ignore-space-at-eol -b -w --ignore-blank-lines
