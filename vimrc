@@ -230,6 +230,17 @@ map <Leader>dt :diffthis<CR>
 map <Leader>do :diffoff<CR>
 map <Leader>du :diffupdate<CR>
 
+"stop using arrow keys
+noremap <up>    :echom 'USE K TO GO UP'<CR>
+noremap <down>  :echom 'USE J TO GO DOWN'<CR>
+noremap <left>  :echom 'USE H TO GO LEFT'<CR>
+noremap <right> :echom 'USE L TO GO RIGHT'<CR>
+inoremap jj     <Esc>l
+"inoremap <up>    <C-o>:echom 'USE K TO GO UP'<CR>
+"inoremap <down>  <C-o>:echom 'USE J TO GO DOWN'<CR>
+"inoremap <right> <C-o>:echom 'USE L TO GO RIGHT'<CR>
+"inoremap <left>  <C-o>:echom 'USE H TO GO LEFT'<CR>
+
 map <Leader>uu :GundoRenderGraph<CR>
 
 function! VerticalSplitPreview(file)
