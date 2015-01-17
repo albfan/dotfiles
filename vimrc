@@ -70,31 +70,15 @@ Plugin 'szw/vim-ctrlspace'            "navigate through buffers and tabs
 Plugin 'rstacruz/sparkup'             "write HTML faster
 Plugin 'junegunn/goyo.vim'            "Non disturb mode
 Plugin 'edkolev/tmuxline.vim'         "Config tmuxline from vim
+Plugin 'shawncplus/skittles_berry'
 
 filetype plugin indent on     " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList          - list configured plugins
-" :PluginInstall(!)    - install (update) plugins
-" :PluginSearch(!) foo - search (or refresh cache first) for foo
-" :PluginClean(!)      - confirm (or auto-approve) removal of unused plugins
-"
-" see :h vundle for more details or wiki for FAQ
-" NOTE: comments after Plugin commands are not allowed.
-" Put your stuff after this line
 
-" Solarized scheme
 syntax enable
 
-if has('gui_running')
-   set background=dark
-   colorscheme solarized 
-else
-   set background=dark
-   "set background=light
-endif
+" Solarized scheme
+colorscheme skittles_berry
+set background=dark
 
 "Show column layout error
 "match ErrorMsg '\%>120v.\+'
