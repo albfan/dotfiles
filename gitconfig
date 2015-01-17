@@ -18,9 +18,8 @@
    loga = log --color --graph --decorate --all
 
    find = "!git log --color -p -S "
-   tdiff = diff --ignore-space-at-eol -b -w --ignore-blank-lines
-   tshow = show --ignore-space-at-eol -b -w --ignore-blank-lines
-
+   tdiff = diff --ignore-space-at-eol -b --ignore-blank-lines
+   tshow = show --ignore-space-at-eol -b --ignore-blank-lines
    recommit = commit --amend -C HEAD
 
    #typical workflow when forget something
