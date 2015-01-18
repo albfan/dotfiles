@@ -70,6 +70,7 @@ Plugin 'szw/vim-ctrlspace'            "navigate through buffers and tabs
 Plugin 'rstacruz/sparkup'             "write HTML faster
 Plugin 'junegunn/goyo.vim'            "Non disturb mode
 Plugin 'edkolev/tmuxline.vim'         "Config tmuxline from vim
+Plugin 'mbbill/desertEx'
 Plugin 'shawncplus/skittles_berry'
 
 filetype plugin indent on     " required
