@@ -77,13 +77,10 @@ filetype plugin indent on     " required
 
 syntax enable
 
-" Solarized scheme
-colorscheme skittles_berry
-set background=dark
+if &diff
+   colorscheme skittles_berry
+endif
 
-"Show column layout error
-"match ErrorMsg '\%>120v.\+'
-"set cc=120
 highlight ColorColumn ctermbg=235 guibg=#2c2d27
 
 function! ColorColumnToggle()
