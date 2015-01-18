@@ -1,0 +1,9 @@
+!kcode  co   normal      shift            ctrl          ctrl+shift  altgr         altgr 
+!keycode 34 = dead_grave  dead_circumflex  bracketleft   braceleft   bracketleft   dead_abovering  dead_grave  dead_circumflex  bracketleft   dead_abovering
+keycode 34 =   bracketleft dead_circumflex  dead_grave bracketleft    bracketleft   dead_abovering  dead_grave  dead_circumflex  bracketleft   dead_abovering
+!keycode 35 = plus        asterisk         bracketright  braceright  bracketright  dead_macron     plus        asterisk         bracketright  dead_macron
+keycode 35 = bracketright plus         asterisk         asterisk   asterisk  dead_macron     plus        asterisk         bracketright  dead_macron
+!keycode 48 = dead_acute  dead_diaeresis   apostrophe    quotedbl    braceleft     braceleft       dead_acute  dead_diaeresis   braceleft     braceleft
+keycode 48 = braceleft   braceleft        apostrophe    quotedbl    dead_acute    dead_diaeresis      dead_acute  dead_diaeresis   braceleft     braceleft
+!keycode 51 = ccedilla    Ccedilla         backslash     bar         braceright    dead_breve      ccedilla    Ccedilla         braceright    dead_breve
+keycode 51 =  braceright    dead_breve        backslash     bar         ccedilla    Ccedilla      ccedilla    Ccedilla         braceright    dead_breve
