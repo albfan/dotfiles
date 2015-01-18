@@ -1,0 +1,30 @@
+Xft.dpi:96
+
+xpdf.title: PDF
+
+XTerm*locale: true
+XTerm*utf8Title: true
+XTerm*fontMenu*fontdefault*Label: Default
+XTerm*faceName: inconsolata for powerline
+XTerm*faceSize: 12
+XTerm*faceSize1: 10
+XTerm*faceSize2: 10
+XTerm*faceSize3: 10
+XTerm*faceSize4: 10
+XTerm*faceSize5: 10
+XTerm*faceSize6: 10
+XTerm*background: black
+XTerm*foreground: gray
+XTerm*SaveLines: 9000
+XTerm*scrollBar: false
+XTerm*termName:  xterm-256color
+Xterm*autoWrap: false
+Xterm*clientDecoration: none
+xterm*borderWidth: 0
+XTerm*selectToClipboard: true
+XTerm*vt100*translations:   #override           \n\
+    Shift <Key> Delete: insert-selection(SELECT)    \n\
+    Shift Ctrl <Key> C: select-end(CLIPBOARD)       \n\
+    Shift Ctrl <Key> V: insert-selection(CLIPBOARD) \n\
+    Shift Ctrl <Key> N: spawn-new-terminal()        \n
+
