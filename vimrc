@@ -72,6 +72,7 @@ Plugin 'junegunn/goyo.vim'            "Non disturb mode
 Plugin 'edkolev/tmuxline.vim'         "Config tmuxline from vim
 Plugin 'mbbill/desertEx'
 Plugin 'shawncplus/skittles_berry'
+Plugin 'godlygeek/tabular'
 
 filetype plugin indent on     " required
 
