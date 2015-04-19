@@ -62,6 +62,8 @@
    cleanall = clean -dxf
    ls-subtrees = !"git log | grep git-subtree-dir | awk '{ print $2 }'"
 
+   cleanall = clean -dxf
+
 [status]
    color = auto
 [merge]
