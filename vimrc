@@ -33,7 +33,7 @@ Plugin 'tpope/vim-fugitive'           "helper for using git on vim
 Plugin 'albfan/git-time-lapse'        "show a history time lapse like perforce
 
 Plugin 'vim-scripts/genutils'
-Plugin 'albfan/BreakPts'              "Help debug vim-scripts (only remote)
+Plugin 'albfan/vim-breakpts'              "Help debug vim-scripts (only remote)
 Plugin 'vim-scripts/Decho'            "Echo messages on vim scripts execution
 Plugin 'vim-scripts/YankRing.vim'     "Cycles through last yanked chunks Ctrl+y
 Plugin 'Yggdroot/indentLine'          "Shows a vertical line on defined tabstop
