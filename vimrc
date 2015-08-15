@@ -118,6 +118,7 @@ Plugin 'albfan/vim-projconf'
 filetype plugin indent on     " required
 
 let g:session_autoload = 'no'
+let g:session_autosave = 'no'
 
 syntax enable
 
