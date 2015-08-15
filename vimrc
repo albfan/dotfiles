@@ -30,19 +30,25 @@ Plugin 'albfan/CCTree-1'              "cscope tree
 Plugin 'gcmt/wildfire.vim'
 Plugin 'tpope/vim-scriptease'         "helper for write vim scripts
 Plugin 'tpope/vim-fugitive'           "helper for using git on vim
+Plugin 'tpope/vim-abolish'            "helper for word replacement 
 Plugin 'albfan/git-time-lapse'        "show a history time lapse like perforce
 
 Plugin 'vim-scripts/genutils'
-Plugin 'albfan/vim-breakpts'              "Help debug vim-scripts (only remote)
+Plugin 'albfan/vim-breakpts'          "Help debug vim-scripts (only remote)
 Plugin 'vim-scripts/Decho'            "Echo messages on vim scripts execution
 Plugin 'vim-scripts/YankRing.vim'     "Cycles through last yanked chunks Ctrl+y
-Plugin 'Yggdroot/indentLine'          "Shows a vertical line on defined tabstop
-"Plugin 'SirVer/ultisnips'            "snippets for coding for<TAB> creates a loop etc...
+Plugin 'albfan/indentLine'            "Shows a vertical line on defined tabstop
+Plugin 'SirVer/ultisnips'             "snippets for coding for<TAB> creates a loop etc...
+Plugin 'albfan/vim-snippets'           "snippets definition
 Plugin 'ervandew/supertab'            "tab autocompletion
-Plugin 'Raimondi/delimitMate'         "Help to insert closing comma, braces
+"Plugin 'Raimondi/delimitMate'         "Help to insert closing comma, braces
+"Plugin 'jiangmiao/auto-pairs'
+"Plugin 'kana/vim-smartinput'
 Plugin 'scrooloose/nerdtree'          "dir navigation
 Plugin 'scrooloose/nerdcommenter'     "easy comment/uncomment
-Plugin 'kien/ctrlp.vim'               "fuzzy search for files
+Plugin 'scrooloose/syntastic'         "syntax errors
+Plugin 'Xuyuanp/nerdtree-git-plugin'  "git plugin forn nerdtree
+"Plugin 'kien/ctrlp.vim'               "fuzzy search for files
 Plugin 'bling/vim-airline'            "handy statusline
 Plugin 'altercation/vim-colors-solarized' "solarized theme
 Plugin 'sjl/gundo.vim'                "show undo tree
@@ -53,8 +59,8 @@ Plugin 'vim-scripts/AnsiEsc.vim'      "conceal escape colors to show a WYSIWYG
 Plugin 'albfan/vim-minimap'           "A minimap file
 Plugin 'albfan/gapply.vim'            "A try to ease git add workflow
 Plugin 'albfan/cream-showinvisibles'  "Show whitespace
-Plugin 'rking/ag.vim'                 "Use ag instead of grep
-Plugin 'airblade/vim-rooter'          "Always set working directory to root of project
+Plugin 'albfan/ag.vim'                "Use ag instead of grep
+Plugin 'albfan/vim-rooter'          "Always set working directory to root of project
 Plugin 'craigemery/vim-autotag'       "refresh tags when writing file
 Plugin 'albfan/dbg.vim'               "general debugger fixed for java sources
 Plugin 'albfan/bashfunction.vim'      "navigate through declared bash functions
@@ -63,7 +69,7 @@ Plugin 'sjbach/lusty'
 "Plugin 'zhaocai/GoldenView.Vim'      "shorcuts conflicts with multi-cursors
 Plugin 'Shougo/vimproc.vim'
 Plugin 'xolox/vim-misc'
-Plugin 'xolox/vim-easytags'
+"Plugin 'xolox/vim-easytags'
 Plugin 'Lokaltog/vim-easymotion'      "easy motion in vim
 Plugin 'majutsushi/tagbar'
 Plugin 'szw/vim-ctrlspace'            "navigate through buffers and tabs
@@ -73,8 +79,45 @@ Plugin 'edkolev/tmuxline.vim'         "Config tmuxline from vim
 Plugin 'mbbill/desertEx'
 Plugin 'shawncplus/skittles_berry'
 Plugin 'godlygeek/tabular'
+Plugin 'xolox/vim-notes'              "Note takig
+Plugin 'xolox/vim-session'            "Extend mksession
+Plugin 'stefandtw/quickfix-reflector.vim' "edit on quickfix
+Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-surround'
+Plugin 'junegunn/vim-emoji'
+Plugin 'junegunn/vader.vim'
+Plugin 'tpope/vim-repeat'
+Plugin 'will133/vim-dirdiff'
+
+Plugin 'vim-scripts/L9'
+"Plugin 'vim-scripts/autocomplpop'
+Plugin 'albfan/JavaDecompiler.vim'
+
+"refactor for vim
+"Plugin 'albfan/vim-lib'
+"Plugin 'albfan/vim-dev'
+"Plugin 'albfan/vim-system-tools'
+"Plugin 'albfan/vim-tags'
+"Plugin 'albfan/vim-brackets'
+"Plugin 'albfan/vim-mu-template'
+"Plugin 'albfan/vim-refactor'
+"Plugin 'albfan/vim-ut'
+
+Plugin 'albfan/vim-help'
+
+Plugin 'elzr/vim-json.git'
+
+Plugin 'albfan/maven-compiler.vim'
+
+Plugin 'albfan/vim-jide'
+
+Plugin 'albfan/vim-sourcepart'
+
+Plugin 'albfan/vim-projconf'
 
 filetype plugin indent on     " required
+
+let g:session_autoload = 'no'
 
 syntax enable
 
@@ -103,12 +146,14 @@ endif
 nmap <Space> <S-Down>
 nmap <S-Space> <S-Up> "Doesn't work on vim only in gvim
 
-nmap <C-B> :tag <C-R>=expand('<cword>')<CR><CR>
-nmap <Leader>tw :set wrap!<CR>
-nmap <Leader>tn :set number!<CR>
-nmap <leader>tcc :call ColorColumnToggle()<CR>
-nmap <leader>tt :TagbarToggle<CR>
-nmap <leader>ti :IndentLinesToggle<CR>
+nnoremap <C-B> :tag <C-R>=expand('<cword>')<CR><CR>zv
+nnoremap <Leader>tw :set wrap!<CR>
+nnoremap <Leader>tl :set number!<CR>
+nnoremap <leader>tc :call ColorColumnToggle()<CR>
+nnoremap <leader>tt :TagbarToggle<CR>
+nnoremap <leader>ts :SyntasticToggleMode<CR>
+nnoremap <Leader>th :GitGutterToggle<CR>
+nnoremap <leader>te :helpclose<CR>
 
 " vertical line indentation
 let g:indentLine_color_term = 239
@@ -134,9 +179,6 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 set t_Co=256
 set laststatus=2
 
-set tabstop=3
-set softtabstop=3
-set shiftwidth=3
 set shiftround
 set expandtab
 
@@ -168,29 +210,30 @@ augroup vim_python
     autocmd FileType python set nowrap
 augroup END
 
-augroup vim_java
-    autocmd!
-    " highlight characters past column 120
-    autocmd FileType java highlight Excess ctermbg=DarkGrey guibg=Black
-    autocmd FileType java match Excess /\%120v.*/
-    autocmd FileType java set makeprg=mvn
-    autocmd FileType java set errorformat=[ERROR]\ %f:[%l%.%c]%m
-augroup END
-
 "NERDTree
 let NERDTreeIgnore=['\.pyc$', '\.class$']
 
-" Index actual jdk
-map <Leader>bjt :!ctags -R ./src $JDK_HOME/src<CR> 
-
 "Yankring
-let g:yankring_replace_n_pkey = '<C-Y>'
-let g:yankring_replace_n_nkey = '<C-U>'
+let g:yankring_replace_n_pkey = '<Leader>e'
+let g:yankring_replace_n_nkey = '<Leader>g'
 
-map <Leader>trn :set relativenumber!<cr>
-map <leader>tn :NERDTreeToggle<CR>
-map <leader>tu :GundoToggle<CR>
+noremap <Leader>ty :YRShow<cr>
+noremap <Leader>trn :set relativenumber!<cr>
+noremap <leader>tn :NERDTreeToggle<CR>
+noremap <leader>tu :GundoToggle<CR>
+noremap <leader>tv :call ToggleVirtualEditmap()<CR>
 
+function! ToggleVirtualEditmap()
+   if &virtualedit == ""
+      set virtualedit=all
+   else 
+      set virtualedit= 
+   endif
+endfunction
+
+map <leader>rn :NERDTree<CR>
+
+map <leader>fn :NERDTreeFocus<CR>
 autocmd FocusLost * set norelativenumber
 autocmd FocusGained * set relativenumber
 
@@ -199,15 +242,24 @@ autocmd InsertLeave * set relativenumber
 
 "git gutter
 highlight clear SignColumn
-nnoremap <Leader>g :GitGutterToggle<CR>
-nnoremap <Leader>gn :GitGutterNextHunk<CR>
-nnoremap <Leader>gp :GitGutterPreviousHunk<CR>
-nnoremap <Leader>gv :GitGutterPreviewHunk<CR>
+nnoremap <Leader>hn :GitGutterNextHunk<CR>
+nnoremap <Leader>hp :GitGutterPrevHunk<CR>
+nnoremap <Leader>hv :GitGutterPreviewHunk<CR>
 
-map <Leader>ug :Unite grep -start-insert<CR>
-map <Leader>uf :Unite file_rec -start-insert<CR>
-map <Leader>um :Unite mapping -start-insert<CR>
-map <Leader>ur :Unite register -start-insert<CR>
+let g:unite_source_history_yank_enable = 1
+map <Leader>ug :<C-u>Unite grep -start-insert<CR>
+map <Leader>uf :<C-u>Unite file_rec -start-insert<CR>
+map <Leader>um :<C-u>Unite mapping -start-insert<CR>
+map <Leader>ur :<C-u>Unite register -start-insert<CR>
+map <leader>uy :<C-u>Unite history/yank<CR>
+
+
+autocmd FileType unite call s:unite_my_settings()
+function! s:unite_my_settings()
+  " Overwrite settings.
+
+  imap <buffer> jj      <Plug>(unite_insert_leave)
+endfunction
 
 map <Leader>dt :diffthis<CR>
 map <Leader>do :diffoff<CR>
@@ -219,12 +271,26 @@ noremap <down>  :echom 'USE J TO GO DOWN'<CR>
 noremap <left>  :echom 'USE H TO GO LEFT'<CR>
 noremap <right> :echom 'USE L TO GO RIGHT'<CR>
 inoremap jj     <Esc>l
+noremap go     o<Esc>
+noremap gO     O<Esc>
 "inoremap <up>    <C-o>:echom 'USE K TO GO UP'<CR>
 "inoremap <down>  <C-o>:echom 'USE J TO GO DOWN'<CR>
 "inoremap <right> <C-o>:echom 'USE L TO GO RIGHT'<CR>
 "inoremap <left>  <C-o>:echom 'USE H TO GO LEFT'<CR>
 
 map <Leader>uu :GundoRenderGraph<CR>
+
+"Window mapping
+map <Leader>wh :wincmd h<CR>
+map <Leader>wl :wincmd l<CR>
+map <Leader>wj :wincmd j<CR>
+map <Leader>wk :wincmd k<CR>
+map <Leader>wH :wincmd H<CR>
+map <Leader>wL :wincmd L<CR>
+map <Leader>wJ :wincmd J<CR>
+map <Leader>wK :wincmd K<CR>
+map <Leader>ww :wincmd w<CR>
+
 
 function! VerticalSplitPreview(file)
    execute "vert botright split" . a:file . "| wincmd p"
@@ -237,4 +303,80 @@ let g:SuperTabDefaultCompletionType = "<c-n>"
 let g:SuperTabContextDefaultCompletionType = "<c-n>"
 
 let g:indentLine_char = '┊'
+
+let &tabstop=3
+let &softtabstop=3
+let &shiftwidth=3
+
+" fix meta-keys which generate <Esc>a .. <Esc>z
+"let c='a'
+"while c <= 'z'
+  ""exec "set <M-S-".c.">=\e".toupper(c)
+  "exec "set <M-".toupper(c).">=\e".toupper(c)
+  "exec "set <M-".c.">=\e".c
+  "let c = nr2char(1+char2nr(c))
+"endwhile
+
+set <S-Del>=[3;2~
+"set <S-M-Del>=[3;4~
+"set <C-Del>=[3;5~
+"set <C-S-Del>=[3;6~
+"set <C-M-Del>=[3;7~
+"set <C-S-M-Del>=[3;8~
+
+"vim-brackets
+let g:markers_mark = '<M-i>'
+let g:markers_jump_f="<M-d>"
+let g:markers_jump_b="<M-S-d>"
+
+" Syntastic
+let g:syntastic_java_javac_exec = escape(expand('$JDK_HOME'), '\') . '/bin/javac'
+let g:syntastic_java_javac_executable = escape(expand('$JDK_HOME'), '\') . '/bin/javac'
+let g:syntastic_enable_signs = 1
+let g:syntastic_debug = 0
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+let g:syntastic_error_symbol = "✗"
+let g:syntastic_warning_symbol = "⚠"
+let g:syntastic_enable_balloons = 1
+let g:syntastic_quiet_messages = { "level": "warnings" }
+let g:syntastic_mode_map = { "mode": "passive"}
+
+vnoremap <Leader>ag :call ag#AgGroup(v:count, visualmode(), '')<CR>
+nnoremap <Leader>ag :call ag#AgGroup(v:count,'','')<CR>
+nnoremap <Leader>ra :call ag#AgGroupLast(v:count)<CR>
+
+function! FocusTagbar()
+  let l:bn = bufwinnr("Tagbar")
+  if l:bn != -1
+    exec l:bn."wincmd w"
+  else 
+    Tagbar
+  endif 
+endfunction
+
+nmap <silent> <Leader>ft :call FocusTagbar()<CR>
+
+let g:ctrlspace_default_mapping_key = '<Leader>tm'
+
+nnoremap <silent> <Leader>tb :BreakPts<CR>
+nnoremap <script> <silent> <Leader>c <Plug>BreakPtsContKey 
+nnoremap <script> <silent> <Leader>n <Plug>BreakPtsNextKey
+nnoremap <script> <silent> <Leader>s <Plug>BreakPtsStepKey
+nnoremap <script> <silent> <Leader>f <Plug>BreakPtsFinishKey
+
+let g:UltiSnipsJumpForwardTrigger="<c-m>"
+let g:UltiSnipsEditSplit = 'context'
+let g:UltiSnipsListSnippets = "<c-l>"
+
+"jj makes this don't work and k too
+"inoremap <expr> j ((pumvisible())?("\<C-n>"):("j"))
+"inoremap <expr> k ((pumvisible())?("\<C-p>"):("k"))
 
