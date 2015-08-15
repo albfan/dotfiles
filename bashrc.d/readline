@@ -1,0 +1,2 @@
+# Avoid C-s from stop output, allowing search forward incrementally
+stty stop ''

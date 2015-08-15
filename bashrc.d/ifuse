@@ -1,0 +1,17 @@
+function _ifuse () {
+  local cur prev
+
+  _get_comp_words_by_ref cur
+  prev=${COMP_WORDS[COMP_CWORD-1]}
+
+  case "$prev" in
+    --documents)
+    COMPREPLY=($(compgen -W 'org.videolan.vlc-ios' -- "$cur"))
+    return 0
+    ;;
+  esac
+
+  COMPREPLY=($(compgen -W "$(_parse_help ifuse)" -- "$cur"))
+}
+
+complete -F _ifuse ifuse
