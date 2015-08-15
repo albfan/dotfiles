@@ -10,19 +10,34 @@
    #extend look at active branch
    logg   = log --color --date-order --graph --oneline --decorate
    #Look with date
-   logda  = log --color --date-order --graph --format=\"%C(auto)%h%Creset %C(blue bold)%ad%Creset %Cgreen%an %C(auto)%d%Creset %s\" --all
-   logd   = log --color --date-order --graph --format=\"%C(auto)%h%Creset %C(blue bold)%ad%Creset %Cgreen%an %C(auto)%d%Creset %s\"
+   logda  = log --color --date-order --graph              --format=\"%C(auto)%h%Creset %C(blue bold)%ad%Creset %Cgreen%an %C(auto)%d%Creset %s\" --all
+   logd   = log --color --date-order --graph              --format=\"%C(auto)%h%Creset %C(blue bold)%ad%Creset %Cgreen%an %C(auto)%d%Creset %s\"
    #Look with relative date
-   lgdar = log --color --date-order --graph --format=\"%C(yellow bold)%h%Creset %C(blue bold)%ar%Creset %Cred%d%Creset %s\" --all
-   lgdr = log --color --date-order --graph --format=\"%C(yellow bold)%h%Creset %C(blue bold)%ar%Creset %Cred%d%Creset %s\"
+   logdra = log --color --date-order --date=local --graph --format=\"%C(auto)%h%Creset %C(blue bold)%ad%Creset %Cgreen%an %C(auto)%d%Creset %s\" --all
+   logdr = log --color --date-order --date=local --graph  --format=\"%C(auto)%h%Creset %C(blue bold)%ad%Creset %Cgreen%an %C(auto)%d%Creset %s\"
+   #Look dates with email
+   logdma  = log --color --date-order --graph               --format=\"%C(auto)%h%Creset %C(blue bold)%ad%Creset %Cgreen%an<%ae> %C(auto)%d%Creset %s\" --all
+   logdm   = log --color --date-order --graph               --format=\"%C(auto)%h%Creset %C(blue bold)%ad%Creset %Cgreen%an<%ae> %C(auto)%d%Creset %s\"
+   logdrma = log --color --date-order --date=local --graph --format=\"%C(auto)%h%Creset %C(blue bold)%ad%Creset %Cgreen%an<%ae> %C(auto)%d%Creset %s\" --all
+   logdrm = log --color --date-order --date=local --graph  --format=\"%C(auto)%h%Creset %C(blue bold)%ad%Creset %Cgreen%an<%ae> %C(auto)%d%Creset %s\"
+   
    loga = log --color --graph --decorate --all
+   logs = log --graph --format=\"%C(auto)%h %d %<|(100,trunc) %s\"
+   logsa = log --graph --all --format=\"%C(auto)%h %d %<|(100,trunc) %s\"
+   logssa = log --graph --all --simplify-by-decoration --format=\"%C(auto)%h %d %<|(100,trunc) %s\"
 
    find = "!git log --color -p -S "
    tdiff = diff --ignore-space-at-eol -b --ignore-blank-lines
    tshow = show --ignore-space-at-eol -b --ignore-blank-lines
+   showm = show -M
+   shown = show --name-only
+   showns = show --name-status
    dirdiff = difftool --dir-diff
    recommit = commit --amend -C HEAD
    diffc = diff --cached
+   diffcm = diff --cached -M
+   sdiff = difftool -y --extcmd icdiff
+   sdiffw = difftool -y --extcmd \"icdiff --whole-file\"
 
    #typical workflow when forget something
    commitrebase = commit -m \"[REBASE] automatic commit to be rebased\"
@@ -42,6 +57,10 @@
    showalias = config --get-regexp alias
 
    econfigg = config --global -e
+   econfig = config -e
+
+   cleanall = clean -dxf
+   ls-subtrees = !"git log | grep git-subtree-dir | awk '{ print $2 }'"
 
 [status]
    color = auto
@@ -59,3 +78,7 @@
 [loop]
    global-command = recommit rework
    diff-command = tdiff
+[graph]
+   viewer = display
+[diff]
+	mnemonicprefix = true
