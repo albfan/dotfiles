@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [ $# == 0 ]
+then
+   echo provide package name
+   exit 1
+fi
+
+package-headers $1 | xargs ctags -I __BEGIN_NAMESPACE_STD="namespace std {" -I __END_NAMESPACE_STD="}" --c++-kinds=+xlp --fields=+iaS --extra=+q -a -f $1.tags

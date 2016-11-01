@@ -1,0 +1,11 @@
+#!/bin/bash
+
+PKG_LIST_CONTENTS_CMD="pacman -Ql"
+
+if [ $# == 0 ]
+then
+  echo provide package name
+  exit 1
+fi
+
+$PKG_LIST_CONTENTS_CMD $1 | grep \\.h$ | awk '{print $2}'
