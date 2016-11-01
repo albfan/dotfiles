@@ -1,0 +1,6 @@
+PACKAGE=$1
+echo variables $PACKAGE:
+for var in $(pkg-config $PACKAGE --print-variables)
+do 
+   echo $var=$(pkg-config --variable=$var $PACKAGE)
+done
