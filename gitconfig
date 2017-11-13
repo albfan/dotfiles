@@ -10,16 +10,16 @@
    #extend look at active branch
    logg   = log --color --date-order --graph --oneline --decorate
    #Look with date
-   logda  = log --color --date-order --graph              --format=\"%C(auto)%h%Creset %C(blue bold)%ad%Creset %Cgreen%an %C(auto)%d%Creset %s\" --all
-   logd   = log --color --date-order --graph              --format=\"%C(auto)%h%Creset %C(blue bold)%ad%Creset %Cgreen%an %C(auto)%d%Creset %s\"
+   logda  = log --color --date-order --graph              --format=\"%C(auto)%h%Creset %C(blue bold)%ad%Creset %Cgreen%aN %C(auto)%d%Creset %s\" --all
+   logd   = log --color --date-order --graph              --format=\"%C(auto)%h%Creset %C(blue bold)%ad%Creset %Cgreen%aN %C(auto)%d%Creset %s\"
    #Look with relative date
-   logdra = log --color --date-order --date=local --graph --format=\"%C(auto)%h%Creset %C(blue bold)%ad%Creset %Cgreen%an %C(auto)%d%Creset %s\" --all
-   logdr = log --color --date-order --date=local --graph  --format=\"%C(auto)%h%Creset %C(blue bold)%ad%Creset %Cgreen%an %C(auto)%d%Creset %s\"
+   logdra = log --color --date-order --date=local --graph --format=\"%C(auto)%h%Creset %C(blue bold)%ad%Creset %Cgreen%aN %C(auto)%d%Creset %s\" --all
+   logdr = log --color --date-order --date=local --graph  --format=\"%C(auto)%h%Creset %C(blue bold)%ad%Creset %Cgreen%aN %C(auto)%d%Creset %s\"
    #Look dates with email
-   logdma  = log --color --date-order --graph               --format=\"%C(auto)%h%Creset %C(blue bold)%ad%Creset %Cgreen%an<%ae> %C(auto)%d%Creset %s\" --all
-   logdm   = log --color --date-order --graph               --format=\"%C(auto)%h%Creset %C(blue bold)%ad%Creset %Cgreen%an<%ae> %C(auto)%d%Creset %s\"
-   logdrma = log --color --date-order --date=local --graph --format=\"%C(auto)%h%Creset %C(blue bold)%ad%Creset %Cgreen%an<%ae> %C(auto)%d%Creset %s\" --all
-   logdrm = log --color --date-order --date=local --graph  --format=\"%C(auto)%h%Creset %C(blue bold)%ad%Creset %Cgreen%an<%ae> %C(auto)%d%Creset %s\"
+   logdma  = log --color --date-order --graph               --format=\"%C(auto)%h%Creset %C(blue bold)%ad%Creset %Cgreen%aN<%ae> %C(auto)%d%Creset %s\" --all
+   logdm   = log --color --date-order --graph               --format=\"%C(auto)%h%Creset %C(blue bold)%ad%Creset %Cgreen%aN<%ae> %C(auto)%d%Creset %s\"
+   logdrma = log --color --date-order --date=local --graph --format=\"%C(auto)%h%Creset %C(blue bold)%ad%Creset %Cgreen%aN<%ae> %C(auto)%d%Creset %s\" --all
+   logdrm = log --color --date-order --date=local --graph  --format=\"%C(auto)%h%Creset %C(blue bold)%ad%Creset %Cgreen%aN<%ae> %C(auto)%d%Creset %s\"
    
    loga = log --color --graph --decorate --all
    logs = log --graph --format=\"%C(auto)%h %d %<|(100,trunc) %s\"
