@@ -25,57 +25,83 @@ Plugin 'gmarik/vundle'
 " Keep Plugin commands between here and filetype plugin indent on.
 " git repos on your local machine (i.e. when working on your own plugin)
 
+Plugin 'tommcdo/vim-lion'
+Plugin 'wellle/targets.vim'
+Plugin 'vim-scripts/Super-Shell-Indent' "sh indent
+Plugin 'suan/vim-instant-markdown'    "markdown preview on browser
+Plugin 'brookhong/cscope.vim'         "cscope
+Plugin 'Chiel92/vim-autoformat'       "Autoformat code
+Plugin 'devjoe/vim-codequery'         "Code indexer
+Plugin 'albfan/MultiPrompt.vim'       "Multiple fields prompt dialog
+Plugin 'embear/vim-localvimrc'        "per project configuration
 Plugin 'terryma/vim-multiple-cursors' "support for multi selections Ctrl+N
 Plugin 'albfan/CCTree-1'              "cscope tree
 Plugin 'gcmt/wildfire.vim'
+Plugin 'albfan/vim-goto'              "Navigate to funcions dinamically
 Plugin 'tpope/vim-scriptease'         "helper for write vim scripts
 Plugin 'tpope/vim-fugitive'           "helper for using git on vim
 Plugin 'tpope/vim-abolish'            "helper for word replacement 
+Plugin 'tpope/vim-classpath'          "helper for goto java classpath 
 Plugin 'albfan/git-time-lapse'        "show a history time lapse like perforce
-
+Plugin 'gregsexton/gitv'
+Plugin 'albfan/vim-git-graph'
+Plugin 'albfan/vim-patchreview'       "Review a patch
 Plugin 'vim-scripts/genutils'
 Plugin 'albfan/vim-breakpts'          "Help debug vim-scripts (only remote)
+Plugin 'vim-scripts/winmanager'
 Plugin 'vim-scripts/Decho'            "Echo messages on vim scripts execution
 Plugin 'vim-scripts/YankRing.vim'     "Cycles through last yanked chunks Ctrl+y
 Plugin 'albfan/indentLine'            "Shows a vertical line on defined tabstop
 Plugin 'SirVer/ultisnips'             "snippets for coding for<TAB> creates a loop etc...
 Plugin 'albfan/vim-snippets'           "snippets definition
 Plugin 'ervandew/supertab'            "tab autocompletion
+
 "Plugin 'Raimondi/delimitMate'         "Help to insert closing comma, braces
 "Plugin 'jiangmiao/auto-pairs'
 "Plugin 'kana/vim-smartinput'
+
 Plugin 'scrooloose/nerdtree'          "dir navigation
 Plugin 'scrooloose/nerdcommenter'     "easy comment/uncomment
 Plugin 'scrooloose/syntastic'         "syntax errors
-Plugin 'Xuyuanp/nerdtree-git-plugin'  "git plugin forn nerdtree
+Plugin 'albfan/nerdtree-git-plugin'   "git plugin for nerdtree
+Plugin 'albfan/nerdtree-file-filter-plugin'   "git plugin for nerdtree
+
 "Plugin 'kien/ctrlp.vim'               "fuzzy search for files
-Plugin 'bling/vim-airline'            "handy statusline
+"Plugin 'zhaocai/GoldenView.Vim'      "shorcuts conflicts with multi-cursors
+"Plugin 'xolox/vim-easytags'
+"Plugin 'vim-scripts/autocomplpop'
+
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'vim-airline/vim-airline'
+
 Plugin 'altercation/vim-colors-solarized' "solarized theme
+Plugin 'simnalamburt/vim-mundo'       "Another undo tree manager
 Plugin 'sjl/gundo.vim'                "show undo tree
 Plugin 'sjl/splice.vim'               "helper for diffs
 Plugin 'davidhalter/jedi-vim'
+Plugin 'albfan/vim-signify'           "Show changed lines
 Plugin 'airblade/vim-gitgutter'       "Ruler for changes on git tracked files
-Plugin 'vim-scripts/AnsiEsc.vim'      "conceal escape colors to show a WYSIWYG
+Plugin 'albfan/AnsiEsc.vim'           "conceal escape colors to show a WYSIWYG
 Plugin 'albfan/vim-minimap'           "A minimap file
 Plugin 'albfan/gapply.vim'            "A try to ease git add workflow
 Plugin 'albfan/cream-showinvisibles'  "Show whitespace
 Plugin 'albfan/ag.vim'                "Use ag instead of grep
-Plugin 'albfan/vim-rooter'          "Always set working directory to root of project
-Plugin 'craigemery/vim-autotag'       "refresh tags when writing file
+"Plugin 'albfan/vim-rooter'          "Always set working directory to root of project
+"Plugin 'craigemery/vim-autotag'       "refresh tags when writing file
 Plugin 'albfan/dbg.vim'               "general debugger fixed for java sources
 Plugin 'albfan/bashfunction.vim'      "navigate through declared bash functions
 Plugin 'Shougo/unite.vim'             "A plugin from all things
-Plugin 'sjbach/lusty'
-"Plugin 'zhaocai/GoldenView.Vim'      "shorcuts conflicts with multi-cursors
+"Plugin 'Shougo/vimfiler.vim'          "A plugin to replace NERDtree
+Plugin 'albfan/Easytree.vim'          "A plugin to replace NERDtree
+"Plugin 'sjbach/lusty'
 Plugin 'Shougo/vimproc.vim'
 Plugin 'xolox/vim-misc'
-"Plugin 'xolox/vim-easytags'
 Plugin 'Lokaltog/vim-easymotion'      "easy motion in vim
 Plugin 'majutsushi/tagbar'
 Plugin 'szw/vim-ctrlspace'            "navigate through buffers and tabs
 Plugin 'rstacruz/sparkup'             "write HTML faster
 Plugin 'junegunn/goyo.vim'            "Non disturb mode
-Plugin 'edkolev/tmuxline.vim'         "Config tmuxline from vim
+"Plugin 'edkolev/tmuxline.vim'         "Config tmuxline from vim
 Plugin 'mbbill/desertEx'
 Plugin 'shawncplus/skittles_berry'
 Plugin 'godlygeek/tabular'
@@ -88,9 +114,7 @@ Plugin 'junegunn/vim-emoji'
 Plugin 'junegunn/vader.vim'
 Plugin 'tpope/vim-repeat'
 Plugin 'will133/vim-dirdiff'
-
 Plugin 'vim-scripts/L9'
-"Plugin 'vim-scripts/autocomplpop'
 Plugin 'albfan/JavaDecompiler.vim'
 
 "refactor for vim
@@ -104,16 +128,17 @@ Plugin 'albfan/JavaDecompiler.vim'
 "Plugin 'albfan/vim-ut'
 
 Plugin 'albfan/vim-help'
-
 Plugin 'elzr/vim-json.git'
-
 Plugin 'albfan/maven-compiler.vim'
-
 Plugin 'albfan/vim-jide'
-
 Plugin 'albfan/vim-sourcepart'
-
 Plugin 'albfan/vim-projconf'
+
+Plugin 'blueshirts/darcula'
+
+let g:localvimrc_name = [".lvimrc", ".config/vimrc"]
+let g:localvimrc_sandbox = 0
+let g:localvimrc_ask = 0
 
 filetype plugin indent on     " required
 
@@ -167,7 +192,7 @@ let g:indentLine_char = '│'
 " Use <leader>t to open ctrlp
 let g:ctrlp_map = '<C-p>'
 " Ignore these directories
-set wildignore+=*/build/*,*/target/*
+"set wildignore+=*/build/*,*/target/*
 " disable caching
 "let g:ctrlp_use_caching=0
 "}}}
@@ -220,9 +245,12 @@ let g:yankring_replace_n_nkey = '<Leader>g'
 
 noremap <Leader>ty :YRShow<cr>
 noremap <Leader>trn :set relativenumber!<cr>
-noremap <leader>tn :NERDTreeToggle<CR>
+noremap <leader>tn :EasyTree<CR>
+"noremap <leader>tn :NERDTreeToggle<CR>
 noremap <leader>tu :GundoToggle<CR>
 noremap <leader>tv :call ToggleVirtualEditmap()<CR>
+
+noremap <leader>nf :NERDTreeFind<CR>
 
 function! ToggleVirtualEditmap()
    if &virtualedit == ""
@@ -291,6 +319,10 @@ map <Leader>wL :wincmd L<CR>
 map <Leader>wJ :wincmd J<CR>
 map <Leader>wK :wincmd K<CR>
 map <Leader>ww :wincmd w<CR>
+map <Leader>w+ :wincmd +<CR>
+map <Leader>w- :wincmd -<CR>
+map <Leader>w> :wincmd ><CR>
+map <Leader>w< :wincmd <<CR>
 
 
 function! VerticalSplitPreview(file)
@@ -350,10 +382,6 @@ let g:syntastic_enable_balloons = 1
 let g:syntastic_quiet_messages = { "level": "warnings" }
 let g:syntastic_mode_map = { "mode": "passive"}
 
-vnoremap <Leader>ag :call ag#AgGroup(v:count, visualmode(), '')<CR>
-nnoremap <Leader>ag :call ag#AgGroup(v:count,'','')<CR>
-nnoremap <Leader>ra :call ag#AgGroupLast(v:count)<CR>
-
 function! FocusTagbar()
   let l:bn = bufwinnr("Tagbar")
   if l:bn != -1
@@ -381,3 +409,101 @@ let g:UltiSnipsListSnippets = "<c-l>"
 "inoremap <expr> j ((pumvisible())?("\<C-n>"):("j"))
 "inoremap <expr> k ((pumvisible())?("\<C-p>"):("k"))
 
+
+" ----
+" sandbox
+" ----
+
+let g:ProjConf = [
+     \ [ "~/projects/c/miraclecast", "~/projects/c/miraclecast/tags", "~/projects/c/systemd/tags" ]
+     \ ]
+
+function! FindAndReplaceAll(pattern,replacement)
+  let searchfiles = "*"
+  "exec "S/".a:pattern."/ -R ".searchfiles
+  let excludedir = "target"
+  silent! exec "grep ".a:pattern." -iR --exclude-dir ".excludedir." *"
+  let files = uniq(sort(map(getqflist(), "bufname(v:val['bufnr'])")))
+  "let size = len(files)
+  "let i = 0
+  let flags = "g"."i"."c"
+  "while i < size
+  for f in files
+    "exe "cnf"
+    exe "edit ".f 
+    exec "%s/".a:pattern."/".a:replacement."/".flags
+    "TODO: on quit quit all remaining searches
+    "let i = i + 1 
+  "endwhile
+  endfor
+endfunction
+
+function! UltiSnips_Java_GetPackage()
+	if exists("*FindRootDirectory")
+		let rootDir = FindRootDirectory()
+		let srcpath = "src/main/java"
+		let package = substitute(expand("%:p:h"), rootDir."/".srcpath, "", "")
+		let package = substitute(package, "/", ".", "g")[1:]
+		return package
+	endif
+	return ""
+endfunction
+
+
+map <Leader>sc :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
+function! PrettifyVimDictionary() 
+   execute '%s/"/\\"/g'
+   execute "%s/'/\"/g"
+   execute "%!python -m json.tool"
+endfunction
+
+
+
+let g:brkptsLayout="edit"
+
+function! ToggleSyntax()
+  if exists("g:syntax_on")
+    syntax off
+  else
+    syntax enable
+ endif
+endfunction
+
+
+highlight SignifySignAdd    cterm=none ctermbg=none  ctermfg=119
+highlight SignifySignDelete cterm=none ctermbg=none  ctermfg=167
+highlight SignifySignChange cterm=none ctermbg=none  ctermfg=227
+highlight link SignifyLineAdd             SignifySignAdd
+highlight link SignifyLineChange          SignifySignChange
+highlight link SignifyLineDelete          SignifySignDelete
+
+" Set scripts to be executable from the shell
+function! Make_executable()
+  if getline(1) =~ "^#!" || expand('%:e') == 'sh'
+    silent !chmod +x <afile> 
+  endif
+endfunction
+au BufWritePost * call Make_executable()
+
+nnoremap <leader>fa :call CscopeFindInteractive(expand('<cword>'))<CR>
+nnoremap <leader>l :call ToggleLocationList()<CR>
+
+" s: Find this C symbol
+nnoremap  <leader>fs :call CscopeFind('s', expand('<cword>'))<CR>
+" g: Find this definition
+nnoremap  <leader>fg :call CscopeFind('g', expand('<cword>'))<CR>
+" d: Find functions called by this function
+nnoremap  <leader>fd :call CscopeFind('d', expand('<cword>'))<CR>
+" c: Find functions calling this function
+nnoremap  <leader>fc :call CscopeFind('c', expand('<cword>'))<CR>
+" t: Find this text string
+nnoremap  <leader>ft :call CscopeFind('t', expand('<cword>'))<CR>
+" e: Find this egrep pattern
+nnoremap  <leader>fe :call CscopeFind('e', expand('<cword>'))<CR>
+" f: Find this file
+nnoremap  <leader>ff :call CscopeFind('f', expand('<cword>'))<CR>
+" i: Find files #including this file
+nnoremap  <leader>fi :call CscopeFind('i', expand('<cword>'))<CR>
