@@ -1,0 +1,17 @@
+set completion-ignore-case on
+#set convert-meta on
+
+$if jdb
+  set show-all-if-ambiguous On
+  set show-all-if-unmodified On
+$endif
+
+"\M-t": "\C-k\C-u[[ \"$SHELLOPTS\" =~ '\\bemacs\\b' ]] && set -o vi || set -o emacs\C-j"
+
+#set blink-matching-paren On
+
+## arrow up
+"\e[A":history-search-backward
+## arrow down
+"\e[B":history-search-forward
+

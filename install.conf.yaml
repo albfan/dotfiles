@@ -10,3 +10,4 @@
     ~/.xinitrc: xinitrc
     ~/.Xmodmap: Xmodmap
     ~/.Xresources: Xresources
+    ~/.inputrc: inputrc
