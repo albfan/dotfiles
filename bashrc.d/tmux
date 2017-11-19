@@ -1,0 +1,3 @@
+function update_title { 
+  printf "\033]2;%s\033\\" "${1:-$TMUX_PANE_TITLE}" 
+}

@@ -1,0 +1,6 @@
+function cdiff-branches-file { cdiff -s $1:$3 $2:$3; }
+function cdiff-show { cdiff -s $1^ $1; }
+function cdiff12 { git diff ":1:./$1" ":3:./$1" | cdiff -s; }
+function cdiff13 { git diff ":1:./$1" ":3:./$1" | cdiff -s; }
+function cdiff23 { git diff ":2:./$1" ":3:./$1" | cdiff -s; }
+function lhg { history | grep $1 | cut -c 8-; }

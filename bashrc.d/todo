@@ -1,0 +1,2 @@
+alias todo=todo.sh
+complete -F _todo todo

@@ -1,0 +1,112 @@
+#!/bin/bash
+
+# git prompt
+
+#  Customize BASH PS1 prompt to show current GIT repository and branch.
+#  by Mike Stewart - http://MediaDoneRight.com
+
+#  SETUP CONSTANTS
+#  Bunch-o-predefined colors.  Makes reading code easier than escape sequences.
+#  I don't remember where I found this.  o_O
+
+#TODO: Cambiar nombres para poder usar los del prompt y los de la pantalla
+
+function checkColors() {
+   tputcolors
+   tputs colors
+   infocmp gnome-256color
+   if [[ $TERM = xterm ]] && infocmp gnome-256color >/dev/null 2>&1; then
+      export TERM=gnome-256color
+   elif infocmp xterm-256color >/dev/null 2>&1; then
+      export TERM=xterm-256color
+   fi
+   tputs colors
+
+   echo
+   echo -e "$(tput bold) reg  bld  und   tput-command-colors$(tput sgr0)"
+   
+   for i in $(seq 0 220); do
+     echo " $i $(tput setaf $i)Text$(tput sgr0) $(tput bold)$(tput setaf $i)Text$(tput sgr0) $(tput sgr 0 1)$(tput setaf $i)Text$(tput sgr0)  \$(tput setaf $i)"
+   done
+   
+   echo ' Bold            $(tput bold)'
+   echo ' Underline       $(tput sgr 0 1)'
+   echo ' Reset           $(tput sgr0)'
+   echo
+}
+
+#checkColors
+
+# Reset
+export color_off=$(tput sgr0)
+
+# Regular Colors
+export black=$(tput setaf 0)
+export red=$(tput setaf 1)
+export green=$(tput setaf 2)
+export yellow=$(tput setaf 3)
+export blue=$(tput setaf 4)
+export purple=$(tput setaf 5)
+export cyan=$(tput setaf 6)
+export white=$(tput setaf 7)
+
+# Bold
+export Bblack=$(tput bold)$(tput setaf 0)
+export Bred=$(tput bold)$(tput setaf 1)
+export Bgreen=$(tput bold)$(tput setaf 2)
+export Byellow=$(tput bold)$(tput setaf 3)
+export Bblue=$(tput bold)$(tput setaf 4)
+export Bpurple=$(tput bold)$(tput setaf 5)
+export Bcyan=$(tput bold)$(tput setaf 6)
+export Bwhite=$(tput bold)$(tput setaf 7)
+
+# Underline
+export Ublack=$(tput sgr 0 1)$(tput setaf 0)
+export Ured=$(tput sgr 0 1)$(tput setaf 1)
+export Ugreen=$(tput sgr 0 1)$(tput setaf 2)
+export Uyellow=$(tput sgr 0 1)$(tput setaf 3)
+export Ublue=$(tput sgr 0 1)$(tput setaf 4)
+export Upurple=$(tput sgr 0 1)$(tput setaf 5)
+export Ucyan=$(tput sgr 0 1)$(tput setaf 6)
+export Uwhite=$(tput sgr 0 1)$(tput setaf 7)
+
+# Background
+export On_black=$(tput setab 0)
+export On_red=$(tput setab 1)
+export On_green=$(tput setab 2)
+export On_yellow=$(tput setab 3)
+export On_blue=$(tput setab 4)
+export On_purple=$(tput setab 5)
+export On_cyan=$(tput setab 6)
+export On_white=$(tput setab 7)
+
+# High Intensty
+export Iblack=$(tput dim)$(tput setaf 0)
+export Ired=$(tput dim)$(tput setaf 1)
+export Igreen=$(tput dim)$(tput setaf 2)
+export Iyellow=$(tput dim)$(tput setaf 3)
+export Iblue=$(tput dim)$(tput setaf 4)
+export Ipurple=$(tput dim)$(tput setaf 5)
+export Icyan=$(tput dim)$(tput setaf 6)
+export Iwhite=$(tput dim)$(tput setaf 7)
+
+# Bold High Intensity
+export BIblack=$(tput setaf 90)
+export BIred=$(tput setaf 91)
+export BIgreen=$(tput setaf 92)
+export BIyellow=$(tput setaf 93)
+export BIblue=$(tput setaf 94)
+export BIpurple=$(tput setaf 95)
+export BIcyan=$(tput setaf 96)
+export BIwhite=$(tput setaf 97)
+
+# High Intensty backgrounds
+export BOn_black=$(tput setaf 100)
+export BOn_red=$(tput setaf 101)
+export BOn_green=$(tput setaf 102)
+export BOn_yellow=$(tput setaf 103)
+export BOn_blue=$(tput setaf 104)
+export BOn_purple=$(tput setaf 105)
+export BOn_cyan=$(tput setaf 106)
+export BOn_white=$(tput setaf 107)
+

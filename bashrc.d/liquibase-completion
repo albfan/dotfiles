@@ -1,0 +1,96 @@
+# Debian liquibase(8) completion                             -*- shell-script -*-
+
+_liquibase()
+{
+    local cur prev words cword
+    _init_completion || return
+
+    # debe buscar la ultima palabra clave en caso de que se estén instalando varios paquetes
+    # para saber como completar
+#    local special i
+#    for (( i=0; i < ${#words[@]}-1; i++ )); do
+#        if [[ ${words[i]} == @(install|remove|autoremove|purge|source|build-dep|download|changelog) ]]; then
+#            special=${words[i]}
+#        fi
+#    done
+#
+#    if [[ -n $special ]]; then
+#        case $special in
+#            remove|autoremove|purge)
+#                if [[ -f /etc/debian_version ]]; then
+#                    # Debian system
+#                    COMPREPLY=( $( \
+#                        _xfunc dpkg _comp_dpkg_installed_packages $cur ) )
+#                else
+#                    # assume RPM based
+#                    _xfunc rpm _rpm_installed_packages
+#                fi
+#                return 0
+#                ;;
+#            source)
+#                COMPREPLY=( $( apt-cache --no-generate pkgnames "$cur" \
+#                    2> /dev/null ) $( apt-cache dumpavail | \
+#                    command grep "^Source: $cur" | sort -u | cut -f2 -d" " ) )
+#                return 0
+#                ;;
+#            *)
+#                COMPREPLY=( $( apt-cache --no-generate pkgnames "$cur" \
+#                    2> /dev/null ) )
+#                return 0
+#                ;;
+#        esac
+#    fi
+
+    # Autocompletado para ciertas opciones
+    case $prev in
+         deleteChangeSet)
+             #TODO sacar de configuración o meter en java
+             PSQL_COMMAND="psql -U postgres -d playtheguru -A -t -q -c " 
+             SQL_COMMAND="SELECT id FROM databasechangelog "
+             if [[ -n $cur ]]; then
+                 SQL_COMMAND="$SQL_COMMAND where id like '%$cur%'"
+             fi
+             COMPREPLY=( $($PSQL_COMMAND "$SQL_COMMAND"))
+             return 0
+             ;;
+        --logLevel)
+             COMPREPLY=( $(compgen -W 'debug info warning severe off' -- "$cur" ) )
+             return 0
+             ;;
+#        -t|--target-release|--default-release)
+#             COMPREPLY=( $( apt-cache policy | \
+#                 command grep "release.o=Debian,a=$cur" | \
+#                 sed -e "s/.*a=\(\w*\).*/\1/" | uniq 2> /dev/null) )
+#             return 0
+#             ;;
+    esac
+
+    if [[ "$cur" == -* ]]; then
+        COMPREPLY=( $( compgen -W "$(_parse_help liquibase | sed 's/=//g')" -- "$cur" ) )
+    else
+        COMPREPLY=( $( compgen -W 'update updateSQL updateCount updateCountSQL \
+            rollback rollbackSQL rollbackToDate rollbackToDateSQL \
+            rollbackCount rollbackCountSQL futureRollbackSQL \
+            futureRollbackSQL updateTestingRollback \
+            generateChangeLog diff diffChangeLog dbDoc \
+            tag status unexpectedChangeSets validate \
+            calculateCheckSum clearCheckSums changelogSync \
+            changelogSyncSQL markNextChangeSetRan \
+            markNextChangeSetRanSQL listLocks \
+            releaseLocks dropAll \
+            deleteChangeSet' -- "$cur" ) )
+    fi
+
+    return 0
+} &&
+complete -F _liquibase liquibase
+
+#TODO:
+#deleteChangelog
+#delete from databasechangelog where id='BO-20140108-1';
+#Meter autocompletado de los nombres de changelogs
+#select id from databasechangelog;
+
+#showChangelog
+
+# ex: ts=4 sw=4 et filetype=sh

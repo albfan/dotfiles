@@ -1,0 +1,24 @@
+# Funcion que sirve para extender los comandos de subversion, como los alias de git
+# TODO: Interesa hacerlo con algún tipo de hashmap (mas parecido aún a git alias)
+svn () 
+{ 
+    if [ "${svn_alias[$1]}" != "" ]
+    then
+        local COMMAND="$1";
+        shift;
+        eval "${svn_alias[$COMMAND]}" $@;
+    else
+        /usr/bin/svn $@;
+    fi
+}
+
+declare -A svn_alias
+
+# Sistema para crear hashmap
+svn_add_alias() {
+    svn_alias["$1"]="$2"
+}
+
+svn_add_alias logg svn-logg
+
+complete -F _svn -o default -X '@(*/.svn|*/.svn/|.svn|.svn/)' -W "${!svn_alias[@]}" svn

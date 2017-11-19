@@ -1,0 +1,10 @@
+# Path de decompilador de android
+PATH="$HOME/bin/dex2jar:$PATH"
+
+# Path para android tools
+export ANDROID_SDK="$HOME/bin/android/android-sdk-linux"
+export ANDROID_HOME="$HOME/bin/android/android-sdk-linux"
+export ANDROID_NDK="$HOME/bin/android/android-ndk/android-ndk-r10e"
+PATH="$ANDROID_SDK/platform-tools:$PATH"
+PATH="$ANDROID_SDK/tools:$PATH"
+PATH="$ANDROID_NDK:$PATH"

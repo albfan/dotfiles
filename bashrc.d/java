@@ -1,0 +1,2 @@
+export JDK_HOME=/home/alberto/bin/java/jdk1.8.0_40
+export JAVA_HOME=$JDK_HOME/jre

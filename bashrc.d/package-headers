@@ -1,0 +1,11 @@
+#!/bin/bash
+
+function _package_headers() {
+  local cur prev
+  _get_comp_words_by_ref -n : cur prev
+  COMPREPLY=($(compgen -W "$(pacman -Qn | awk '{print $1}')" -- "$cur"))
+}
+
+complete -F _package_headers package-headers
+complete -F _package_headers ctags-package
+complete -F _package_headers cscope-with-dependencies

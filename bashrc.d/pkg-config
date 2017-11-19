@@ -1,0 +1,17 @@
+#!/bin/bash
+
+function _pkg_config() { 
+  local cur prev
+  COMPREPLY=()
+  _get_comp_words_by_ref -n : cur prev
+
+  if [[ "$cur" == -* ]]; then
+    COMPREPLY=( $( compgen -W "$(_parse_help pkg-config | sed 's/=//g')" -- "$cur" ) )
+  else
+    COMPREPLY=($(compgen -W "$(pkg-config --list-all | awk '{print $2}')" -- "$cur"))
+  fi
+}
+
+
+complete -F _pkg_config pkg-config
+complete -F _pkg_config pkg-config-variables
