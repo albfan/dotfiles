@@ -11,3 +11,4 @@
     ~/.Xmodmap: Xmodmap
     ~/.Xresources: Xresources
     ~/.inputrc: inputrc
+    ~/bin/diffconflicts: bin/diffconflicts
