@@ -7,8 +7,11 @@
    loggs  = log --color --date-order --graph --oneline --decorate --simplify-by-decoration
    #extend look at all repo
    logga  = log --color --date-order --graph --oneline --decorate --all
+   loggan = log --color --date-order --graph --oneline --decorate --all --name-status
    #extend look at active branch
-   logg   = log --color --date-order --graph --oneline --decorate
+   lo      = log --color --date-order --graph --decorate
+   logg    = log --color --date-order --graph --decorate --oneline
+   loggn   = log --color --date-order --graph --decorate --oneline --name-status
    #Look with date
    logda  = log --color --date-order --graph              --format=\"%C(auto)%h%Creset %C(blue bold)%ad%Creset %Cgreen%aN %C(auto)%d%Creset %s\" --all
    logd   = log --color --date-order --graph              --format=\"%C(auto)%h%Creset %C(blue bold)%ad%Creset %Cgreen%aN %C(auto)%d%Creset %s\"
@@ -61,13 +64,17 @@
 
    cleanall = clean -dxf
    ls-subtrees = !"git log | grep git-subtree-dir | awk '{ print $2 }'"
-
-   cleanall = clean -dxf
+	show-stage = ls-files -s --abbrev
+	reset-merge = checkout
 
 [status]
    color = auto
 [merge]
-   tool = meld
+   tool = detail-meld
+   conflictstyle = diff3
+[mergetool "splice"]
+   cmd = "vim -f $BASE $LOCAL $REMOTE $MERGED -c 'SpliceInit'"
+   trustExitCode = true
 [core]
    autocrlf = input
    editor = vim
@@ -84,3 +91,21 @@
    viewer = display
 [diff]
 	mnemonicprefix = true
+[mergetool]
+	keepBackup = false
+[bz]
+	browser = firefox3
+[mergetool "diffconflicts"]
+	cmd = diffconflicts vim $BASE $LOCAL $REMOTE $MERGED
+	trustExitCode = true
+	keepBackup = false
+[difftool "jmeld"]
+	cmd = jmeld $LOCAL $REMOTE
+[mergetool "jmeld"]
+	cmd = jmeld $BASE $LOCAL $REMOTE $MERGED
+	trustExitCode = true
+	keepBackup = false
+[mergetool "detail-meld"]
+   cmd = meld --diff $BASE $LOCAL --diff $BASE $REMOTE --diff $LOCAL $MERGED $REMOTE
+[color "diff"]
+	whitespace = red reverse
