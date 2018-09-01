@@ -1,0 +1,2 @@
+export PATH=/home/alberto/bin/plasticscm4/client:$PATH
+export PATH=/home/alberto/bin/plasticscm4/server:$PATH
