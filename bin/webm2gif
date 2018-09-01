@@ -1,0 +1,27 @@
+#!/bin/sh
+
+if [ $# -lt 2 ]
+then
+   echo provide INPUT and OUTPUT arguments:
+   echo "$(basename $0) <INPUT> <OUTPUT>"
+   exit 1
+fi
+
+INPUT="$1"
+OUTPUT="$2"
+
+palette="/tmp/palette.png"
+
+#RESIZE=640
+RESIZE=-1
+
+#FRAMERATE=30
+FRAMERATE=15
+
+#filters="fps=${FRAMERATE},scale=${RESIZE}:-1:flags=lanczos"
+filters="scale=-1:-1:flags=lanczos"
+
+ffmpeg -v warning -i "$INPUT" -vf "$filters,palettegen" -y $palette
+ffmpeg -v warning -i "$INPUT" -i $palette -lavfi "$filters [x]; [x][1:v] paletteuse" -y "$OUTPUT"
+
+rm $palette

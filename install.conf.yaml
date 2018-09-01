@@ -12,3 +12,4 @@
     ~/.Xresources: Xresources
     ~/.inputrc: inputrc
     ~/bin/diffconflicts: bin/diffconflicts
+    ~/bin/webm2gif:
